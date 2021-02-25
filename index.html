@@ -22,12 +22,15 @@
                 <ul class="header-nav res-marg-pad">
                     <li class="item">
                         <a class="header-nav-static header-hover current" href="./index.html">Студия</a>
+                        <div class="border-nav"></div>
                     </li>
                     <li class="item">
                         <a class="header-nav-static header-hover" href="./portfolio.html">Портфолио</a>
+                        <div class="border-nav"></div>
                     </li>
                     <li class="item">
                         <a class="header-nav-static header-hover" href="#">Контакты</a>
+                        <div class="border-nav"></div>
                     </li>
                 </ul>
             </nav>
@@ -56,7 +59,10 @@
         <section class="main-hero">
             <div class="main-hero-container">
                 <h1 class="main-hero-tittle res-marg-pad">Эффективные решения для вашего бизнеса</h1>
-                <button type="button" class="main-hero-bt bt-cursor">Заказать услугу</button>
+                <button type="button" class="main-hero-bt bt-cursor" data-modal-open>Заказать услугу</button>
+                <div class="backdrop" data-modal>
+                    <div class="modal"></div>
+                </div>
             </div>
         </section>
         <section class="main-accomplishments">
@@ -393,6 +399,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="./js/modal.js"></script>
 
 </body>
 

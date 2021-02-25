@@ -6,6 +6,7 @@
   --gray-text: rgba(117, 117, 117, 1);
   --gray-op06-text: rgba(255, 255, 255, 0.6);
   --gray-op01-bgicon: rgba(255, 255, 255, 0.1);
+  --bgr-blue-card: rgba(33, 150, 243, 0.9);
   --bgr-employment: rgba(47, 48, 58, 0.8);
   --bgr-hero-footer: rgba(47, 48, 58, 1);
   --bgr-wgray: rgba(245, 244, 250, 1);
@@ -46,14 +47,6 @@ body {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-:hover,
-:focus {
-  transition: background-color var(--transition-duration)
-      var(--transition-timing-function),
-    color var(--transition-duration) var(--transition-timing-function),
-    box-shadow var(--transition-duration) var(--transition-timing-function);
 }
 
 .res-marg-pad {
@@ -117,6 +110,8 @@ section:last-child {
 
   padding: 32px 0;
   display: block;
+
+  transition: color var(--transition-duration) var(--transition-timing-function);
 }
 
 /*icon mail, tel*/
@@ -171,16 +166,59 @@ section:last-child {
 }
 
 /*В главной навигации сделано подчёркивание ссылки*/
-.header-nav > .item:hover::after {
+.header-nav .item{
+  position: relative;
+}
+/*через абсолютное позицирование
+.border-nav {
+  width: 100%;
+  height: 0px;
+  background-color: var(--blue-text);
+
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  transition: height var(--transition-duration)
+    var(--transition-timing-function);
+}
+
+.header-hover:hover + .border-nav,
+.header-hover:focus + .border-nav{
+  height: 4px;
+}*/
+
+.header-nav > .item::after,
+.header-nav > .item::after {
   content: '';
   display: block;
-  height: 4px;
+
+  width: 100%;
+  height: 0px;
+
   background: var(--blue-text);
+
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  transition: height var(--transition-duration)
+    var(--transition-timing-function);
+}
+
+.header-nav > .item:hover:after,
+.header-nav > .item:focus:after {
+  height: 4px;
 }
 
 /*линия внизу header*/
 .header {
+  background-color: var(--white-text);
   border-bottom: 1px solid var(--gray-header-line);
+
+  position: sticky;
+  top: -1px;
+  z-index: 9999;
 }
 
 /*Main*/
@@ -402,6 +440,10 @@ section:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: background-color var(--transition-duration)
+      var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function);
 }
 
 .icon-networks {
@@ -453,6 +495,12 @@ section:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  
+
+  transition: border-color var(--transition-duration)
+      var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function);
 }
 
 .customers-icon {
@@ -550,6 +598,11 @@ section:last-child {
 
   padding: 6px 22px;
   border-radius: 4px;
+
+  transition: background-color var(--transition-duration)
+      var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    box-shadow var(--transition-duration) var(--transition-timing-function);
 }
 
 .main-portfolio-list .bt:hover,
@@ -610,14 +663,18 @@ section:last-child {
   border-bottom: 1px solid var(--gray-border);
 }
 
-.main-portfolio-project > .item:hover,
-.main-portfolio-project > .item:focus {
+.main-portfolio-project .link:hover,
+.main-portfolio-project .link:focus {
   box-shadow: var(--portfolio-card-shadow);
 }
 
 .main-portfolio-project .link {
+  height: 100%;
   text-decoration: none;
+
   display: block;
+
+  transition: box-shadow var(--transition-duration) var(--transition-timing-function);
 }
 
 .main-portfolio-project .frame-name-project {
@@ -632,4 +689,38 @@ section:last-child {
 
 .main-portfolio-project .project {
   margin-top: 4px;
+}
+
+/*Синий оверлей с текстом на карточках страницы Портфолио*/
+.main-portfolio-project .thumb{
+  position: relative;
+  overflow: hidden;
+}
+
+.main-portfolio-project .card-visually-hidden{
+font-size: 18px;
+line-height: 1.56;
+
+color: var(--white-text);
+background-color: var(--bgr-blue-card);
+
+padding: 63px 24px;
+
+position: absolute;
+
+transform: translatey(0);
+transition: transform var(--transition-duration) var(--transition-timing-function);
+}
+
+.main-portfolio-project .link:hover .card-visually-hidden,
+.main-portfolio-project .link:focus .card-visually-hidden{
+  transform: translatey(-100%);
+}
+
+/*модальное окно*/
+.is-hidden{
+  position: absolute;
+  width: 100vh;
+  height: 100vh;
+  background-color: gray;
 }
