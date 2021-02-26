@@ -60,9 +60,6 @@
             <div class="main-hero-container">
                 <h1 class="main-hero-tittle res-marg-pad">Эффективные решения для вашего бизнеса</h1>
                 <button type="button" class="main-hero-bt bt-cursor" data-modal-open>Заказать услугу</button>
-                <div class="backdrop" data-modal>
-                    <div class="modal"></div>
-                </div>
             </div>
         </section>
         <section class="main-accomplishments">
@@ -399,7 +396,15 @@
             </div>
         </div>
     </footer>
-
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button  type="button" class="modal-close-bt" data-modal-close>
+                <svg class="icon" width="11" height="11">
+                    <use href="./images/sprite.svg#icon-modal-close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
     <script src="./js/modal.js"></script>
 
 </body>
