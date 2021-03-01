@@ -184,7 +184,7 @@ section:last-child {
 
   position: absolute;
   left: 0;
-  bottom: -1px;
+  bottom: -2px;
 
   transition: opacity var(--transition-duration)
     var(--transition-timing-function);
